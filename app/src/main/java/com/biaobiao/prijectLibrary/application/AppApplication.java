@@ -1,10 +1,12 @@
 package com.biaobiao.prijectLibrary.application;
 
+import com.biaobiao.prijectLibrary.manager.AppConfig;
 import com.biaobiao.prijectLibrary.manager.AppManager;
 import com.biaobiao.prijectLibrary.net.AppExceptionHandler;
 import com.biaobiao.prijectLibrary.net.ExceptionHandler;
 import com.biaobiao.prijectLibrary.net.retrofit.AppHttpClient;
 import com.biaobiao.prijectLibrary.net.retrofit.AppRetrofitCreator;
+import com.biaobiao.prijectLibrary.utils.LoggUtil;
 
 import java.util.logging.Handler;
 
@@ -27,5 +29,11 @@ public class AppApplication extends BaseApplication{
         AppHttpClient.init(new AppRetrofitCreator());
 
         ExceptionHandler.init(new AppExceptionHandler());
+
+        if (AppConfig.IS_DEBUG){
+            LoggUtil.init(LoggUtil.LEVEL_DEBUG);
+        }else {
+            LoggUtil.init(LoggUtil.LEVEL_OFF);
+        }
     }
 }
