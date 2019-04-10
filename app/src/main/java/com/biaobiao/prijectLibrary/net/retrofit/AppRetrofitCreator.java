@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 /**
  * @author: biao
@@ -38,6 +39,7 @@ public class AppRetrofitCreator implements RetrofitCreator {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiConfig.getBaseURL())
                 .addConverterFactory(new AppResponseConverterFactory(GsonUtil.getIntance()))//这里可以使用自定义的Gson转换器
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//retrofit和rxJava适配器
                 .client(build)
                 .build();
         return retrofit;

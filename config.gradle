@@ -38,5 +38,7 @@ ext{
             gson                    : 'com.google.code.gson:gson:2.8.5',
             glide                   : 'com.github.bumptech.glide:glide:4.6.1',
             retrolambda             : 'me.tatarka:gradle-retrolambda:3.7.0',
+
+            systembarintt           : 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     ]
 }

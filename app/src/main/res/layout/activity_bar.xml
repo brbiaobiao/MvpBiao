@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<include
+        android:id="@+id/include_top"
+        layout="@layout/custom_actionbar_title_center"/>-->
+    <FrameLayout android:id="@+id/fl_titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        />
+    <FrameLayout android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+</LinearLayout>
