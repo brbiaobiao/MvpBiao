@@ -1,14 +1,12 @@
 package com.biaobiao.prijectLibrary;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.biaobiao.prijectLibrary.mvp.MvpActivity;
 import com.biaobiao.prijectLibrary.mvp.contact.MainContact;
+import com.biaobiao.prijectLibrary.mvp.entity.TestEntity;
 import com.biaobiao.prijectLibrary.mvp.presenter.MainPresenter;
 import com.biaobiao.prijectLibrary.mvp.rxbase.BaseMvpActivity;
 import com.biaobiao.prijectLibrary.utils.LoggUtil;
@@ -16,6 +14,7 @@ import com.biaobiao.prijectLibrary.utils.LoggUtil;
 public class MainActivity extends BaseMvpActivity<MainContact.IPersenter> implements MainContact.IView {
 
     private TextView packname_tv;
+    private TextView testvalue_tv;
     private Button request_btn;
 
     @Override
@@ -37,6 +36,7 @@ public class MainActivity extends BaseMvpActivity<MainContact.IPersenter> implem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         packname_tv = (TextView)findViewById(R.id.packname_tv);
+        testvalue_tv = (TextView)findViewById(R.id.testvalue_tv);
         request_btn = (Button)findViewById(R.id.request_btn);
         packname_tv.setText(BuildConfig.APPLICATION_ID);
 
@@ -47,5 +47,10 @@ public class MainActivity extends BaseMvpActivity<MainContact.IPersenter> implem
                 getPresenter().getTestData();
             }
         });
+    }
+
+    @Override
+    public void setData(TestEntity entity) {
+//        testvalue_tv.setText(entity.getData().getDetail().get(0).getUrl());
     }
 }

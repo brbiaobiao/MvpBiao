@@ -27,7 +27,11 @@ import com.biaobiao.prijectLibrary.mvp.MvpActivity;
 import com.biaobiao.prijectLibrary.utils.StatusBarUtil;
 import com.biaobiao.prijectLibrary.widget.AbsTitleBar;
 import com.biaobiao.prijectLibrary.widget.DefaultTitleBar;
+import com.lypeer.fcpermission.FcPermissions;
+import com.lypeer.fcpermission.impl.FcPermissionsCallbacks;
 
+
+import java.util.List;
 
 import io.reactivex.annotations.NonNull;
 import io.reactivex.annotations.Nullable;
@@ -37,7 +41,7 @@ import io.reactivex.annotations.Nullable;
  * @create: 2019/4/10
  * @Describe:
  */
-public abstract class BaseMvpActivity<T extends IBasePresenter> extends MvpActivity<T> implements IContextView, IProgressAble {
+public abstract class BaseMvpActivity<T extends IBasePresenter> extends MvpActivity<T> implements FcPermissionsCallbacks, IContextView, IProgressAble {
 //    protected LoadingDialog mDialog;
     protected AbsTitleBar mTitleBar;
 
@@ -148,7 +152,6 @@ public abstract class BaseMvpActivity<T extends IBasePresenter> extends MvpActiv
     @Override
     protected void onResume() {
         super.onResume();
-//        MobclickAgent.onResume(this);
         if (!isInited) {
             init();
             isInited = true;
@@ -158,7 +161,6 @@ public abstract class BaseMvpActivity<T extends IBasePresenter> extends MvpActiv
     @Override
     protected void onPause() {
         super.onPause();
-//        MobclickAgent.onPause(this);
 
     }
 
@@ -175,9 +177,37 @@ public abstract class BaseMvpActivity<T extends IBasePresenter> extends MvpActiv
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         //第三方申请权限库
-//        FcPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+        FcPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
 
+    /**
+     * 权限申请回调接口，成功时回调
+     *
+     * @param i
+     * @param list
+     */
+    @Override
+    public void onPermissionsGranted(int i, List<String> list) {
+
+    }
+
+    /**
+     * 权限申请回调接口，被拒时回调
+     *
+     * @param i
+     * @param list
+     */
+    @Override
+    public void onPermissionsDenied(int i, List<String> list) {
+        FcPermissions.checkDeniedPermissionsNeverAskAgain(this,
+                "请在设置中打开权限",
+                R.string.setting, R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        onCancel(dialog, which);
+                    }
+                }, list);
+    }
 
     protected void onCancel(DialogInterface dialog, int which) {
     }

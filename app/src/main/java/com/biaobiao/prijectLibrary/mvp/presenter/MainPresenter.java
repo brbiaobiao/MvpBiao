@@ -33,7 +33,7 @@ public class MainPresenter extends Presenter<MainContact.IView> implements MainC
                 .subscribe(new NextObserver<TestEntity>() {
                     @Override
                     public void onNext(TestEntity testEntity) {
-
+                        getView().setData(testEntity);
                     }
                 });
     }

@@ -57,4 +57,5 @@ dependencies {
 
     implementation libsConfig.retrolambda
     implementation libsConfig.systembarintt
+    implementation libsConfig.fcPermissions
 }
