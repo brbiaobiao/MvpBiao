@@ -31,4 +31,18 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"/>
 
+    <EditText
+        android:id="@+id/edit"
+        android:layout_width="match_parent"
+        android:maxLength="17"
+        android:layout_height="60dp" />
+
+    <Button
+        android:id="@+id/getEdit_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="获取键盘内容"/>
+
 </LinearLayout>
