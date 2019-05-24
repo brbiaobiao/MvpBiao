@@ -16,7 +16,6 @@ import com.biaobiao.prijectLibrary.mvp.entity.TestEntity;
 import com.biaobiao.prijectLibrary.mvp.presenter.MainPresenter;
 import com.biaobiao.prijectLibrary.mvp.rxbase.BaseMvpActivity;
 import com.biaobiao.prijectLibrary.utils.LoggUtil;
-import com.biaobiao.prijectLibrary.widget.A2bigA;
 
 public class MainActivity extends BaseMvpActivity<MainContact.IPersenter> implements MainContact.IView {
 
