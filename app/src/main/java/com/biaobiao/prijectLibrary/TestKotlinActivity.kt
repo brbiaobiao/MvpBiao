@@ -89,11 +89,12 @@ fun whenCode(flag: Int) {
 }
 
 fun forCode(){
-    //递增规则，满足java的递增规则
+    //递增规则，until[m,n) 大于等于m，小于n
     for (i in 0 until 5){
         print("递增--->$i")
     }
 
+    //递减规则，downTo[x,y] 大于等于x,小于等于y
     for (i in 8 downTo 6){
         print("递减--->$i")
     }
